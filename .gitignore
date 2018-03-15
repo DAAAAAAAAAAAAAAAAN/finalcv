@@ -1,8 +1,11 @@
+# Ignore everything in the root
+/*
 
-Caltech4/
+# Now, whitelist anything that's a directory
 
-part2/
-
-FinalProject_part_1_bow.pdf
-FinalProject_part_2_cnn.pdf
-\.DS_Store
+# Un-ignore all of subtree
+!/part2/*.m
+!.gitignore
+!*.m
+*.mat
+*.gz
