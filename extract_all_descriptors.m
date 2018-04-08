@@ -1,4 +1,4 @@
-function all_descriptors = extract_all_descriptors (categories, n)
+function all_descriptors = extract_all_descriptors (categories, n, sift_method, sift_type, step_size)
     descriptors = cell(1, length(categories)*n);
     for i = 1:length(categories)
         category = categories{i};
@@ -9,7 +9,7 @@ function all_descriptors = extract_all_descriptors (categories, n)
         % collect descriptors from all images densely
         for j = 1:length(images)
             image = images{j};
-            d = extract_descriptor(image);
+            d = extract_descriptor(image, sift_method, sift_type, step_size);
             descriptors{(i-1)*n + j} = d;
         end
     end

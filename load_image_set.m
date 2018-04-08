@@ -9,6 +9,6 @@ function [images, paths] = load_image_set(category, type, max, offset)
     paths = cell(1, n);
     for i = 1:n
         paths{i} = fullfile('Caltech4', 'ImageData', strcat(category, '_', type), images_dir(i).name);
-        images{i} = imread(fullfile(images_dir(i).folder, images_dir(i).name));
+        images{i} = im2double(imread(fullfile(images_dir(i).folder, images_dir(i).name)));
     end
 end

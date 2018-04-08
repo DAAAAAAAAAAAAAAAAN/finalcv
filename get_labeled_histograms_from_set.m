@@ -1,4 +1,4 @@
-function [labels, histograms, paths] = get_labeled_histograms_from_set (categories, image_set, n, offset, C)
+function [labels, histograms, paths] = get_labeled_histograms_from_set (categories, image_set, n, offset, C, sift_method, sift_type, step_size)
     k = size(C, 2);
     labels = zeros([length(categories) * n, 1]);
     histograms = zeros([length(categories) * n, k]);
@@ -14,7 +14,7 @@ function [labels, histograms, paths] = get_labeled_histograms_from_set (categori
         for j = 1:length(images)
             image = images{j};
 
-            h = extract_histogram(image, C);
+            h = extract_histogram(image, C, sift_method, sift_type, step_size);
 
             index = (i-1)*n + j;
             labels(index) = i;
