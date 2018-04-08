@@ -10,3 +10,4 @@
 *.mat
 *.gz
 !*.html
+!*.csv
