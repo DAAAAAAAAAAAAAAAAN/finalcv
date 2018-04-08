@@ -29,6 +29,16 @@ function run_experiment (sift_method, sift_type, step_size, vocabulary_size, num
     [training_labels, training_histograms] = get_labeled_histograms_from_set(categories, 'train', number_of_training_samples, number_of_training_samples, visual_vocabulary, sift_method, sift_type, step_size);
     [testing_labels, testing_histograms, testing_paths] = get_labeled_histograms_from_set(categories, 'test', number_of_testing_samples, 0, visual_vocabulary, sift_method, sift_type, step_size);
     disp("collected training and test data");
+    
+    if verbose
+        % display some image with histogram
+        figure(2);
+        for i = 1:number_of_testing_samples:4*number_of_testing_samples
+            img = imread(testing_paths{i});
+            visualize_histogram(img, testing_histograms(i,:));
+            waitforbuttonpress
+        end
+    end
 
     %% construct training and test labels for 4 one-vs-all classifiers
     classifier_labels = cell(length(categories), 2);
