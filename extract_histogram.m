@@ -3,4 +3,5 @@ function histogram = extract_histogram (image, C, sift_method, sift_type, step_s
     d = extract_descriptor(image, sift_method, sift_type, step_size); % get descriptors
     idx = vl_ikmeanspush(d, C); % assign each descriptor to cluster
     histogram = vl_ikmeanshist(k, idx); % create histogram from assignments
+    histogram = histogram ./ size(d,2); % normalize
 end

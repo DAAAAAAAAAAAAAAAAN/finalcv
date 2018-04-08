@@ -3,7 +3,7 @@ run('C:\Users\Daan\Downloads\vlfeat-0.9.21\toolbox\vl_setup')
 path(path, 'C:\Sync\school\s2b4 CV1\finalcv\liblinear-2.20\windows')
 
 %% demo function
-run_experiment('dense', 'gray', 20, 40, 4, 10, true);
+run_experiment('keypoint', 'gray', 20, 40, 4, 10, true);
 
 %% parameter sets
 sift_methods = {'dense', 'keypoint'};
