@@ -1,9 +1,9 @@
 %%
-fid = fopen('results_edited.csv', 'rt');
+fid = fopen('results.csv', 'rt');
 csv = textscan(fid, '%s %s %u %u %u %u %f %f %f %f %f %f', 'HeaderLines', 1, 'Delimiter', ';');
 
 % filter by value for category plots
-filter = csv{5} == 200;
+filter = csv{5} == 16;
 for i = 1:12
     %csv{i} = csv{i}(filter);
 end
@@ -26,7 +26,13 @@ for i = 1:length(x)
     if max(y(1:(i-1))) > y(i)
         % point is strictly dominated
         marker_type = 'x';
-        %marker_type = '.'; % hide for color focus plot
+        marker_type = '.'; % hide for color focus plot
+%         if ~strcmp(csv{1}(i), 'keypoint')
+%             marker_type = '.'; % hide for color focus plot
+%         end
+%         if x(i) == 44.811961 || x(i) == 46.324108 || x(i) == 59.542572
+%             marker_type = 'o';
+%         end
     else
         fprintf("Dominant set: %s %s-sift (step size %i), %i vocabulary size, %i training samples: %.3f MAP in %.1fs\n", csv{1}{i}, csv{2}{i}, csv{3}(i), csv{4}(i), csv{5}(i), csv{7}(i), csv{12}(i));
         marker_type = 'o';
@@ -42,8 +48,14 @@ for i = 1:length(x)
         color = 'b';
     end
     
+    
+%     if strcmp(csv{1}(i), 'keypoint')
+%         marker_type = 'd';
+%         color = 'r';
+%     end
+    
     if ~strcmp(sift_type, 'gray')
-        %marker_type = 'd'; % for color focus plot
+        marker_type = 'd'; % for color focus plot
     end
     
     if n <= 4

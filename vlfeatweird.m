@@ -11,11 +11,11 @@ f1(4,:) = 0;
 [f2,d2] = vl_sift(I, 'frames', f1(:,1), 'Magnif', 3);
 disp("frames are exactly the same:");
 cat(2, f1(:,1), f2(:,1))
-disp("descriptors are very different:");
+disp("but descriptors are very different:");
 cat(2, d1(1:10,1), d2(1:10,1))
 
-%% looking at descriptor in detail
-x = 1; % selecting a sift frame with weak gradient
+%% looking at descriptors in detail
+x = 1000; % selecting a sift frame with weak gradient
 %x = 24000; % selecting a sift frame with strong gradient
 img = imread('cameraman.tif');
 I = im2single(img);
